@@ -3,41 +3,64 @@ import React, {
 } from 'react';
 import BooksToDisplay from './BooksToDisplay.js'
 import '../Css/BookAPICall.css';
-import axios from 'axios';
+
 let Togoodreads = 'https://www.goodreads.com/book/show/'
 let coverImage = 'http://covers.openlibrary.org/b/isbn/'
+let genericBookImage = 'https://www.pinclipart.com/picdir/big/90-903549_book-png-free-clip-art-images-of-bookworms.png'
 class BookAPICall extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             error: null,
             bookData: null,
             toSearch: "",
-            isLoaded: false
+            isLoaded: false,
+            searchTerm:""
         }
+        
+        this.handleChange = this.handleChange.bind(this)
     }
-    async componentDidMount() {
-  
-      const url = 'http://openlibrary.org/search.json?q=hyperion'
-      
-      const response = await axios.get(url)
-     // const bookData = response.data.records[1].authors.primary
-//  this.setState({bookData:bookData,
-  //      isLoaded: true})
+    
+    handleChange(event){
+        const target = event.target
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name
+        this.setState({
+            [name]:value
+        })
+        console.log(value.length)
+    setTimeout(() => {
+        if(value.length>=5){
+            this.find(value)
+           }
+    },1000);   
+        
+    }
 
-  const bookData = response.data
-  this.setState({bookData:bookData,
-  isLoaded: true})
-       
-       
-    }
-    renderItems() {
-        return this.state.bookData.docs.map(item => (
-            <li>
-              <BooksToDisplay title={item.title} author_name={item.author_name} />
-            </li>
-          ));
+                
+        find = searchTerm => {
+        const url = `http://openlibrary.org/search.json?q=${searchTerm}`        
+     
+     fetch(url)
+    .then(result => result.json())
+    .then(data =>{
+        console.log(data.docs)
+        this.setState({bookData: data.docs,
+            isLoaded: true })
+    })
+    
+    /*
+     const response =  axios.get(url)
+      const bookData = response.data
+      this.setState({bookData:bookData,
+      isLoaded: true})*/
+          // console.log(bookData)
       }
+
+   componentDidMount() {
+  this.find(this.state.searchTerm)
+    }      
+   
 
     render() {
         
@@ -48,19 +71,30 @@ class BookAPICall extends Component {
         } else if (!isLoaded) {
           return <div>Loading...</div>;
         } else {
-            console.log(this.state.bookData.docs)
+            
            
         return ( 
-            <div>
-          <ul>{this.renderItems()}</ul>;
-            <BooksToDisplay 
-            
-             title={this.state.bookData.docs[0].title}
-             author_name={this.state.bookData.docs[0].author_name}
-             isbn={ this.state.bookData.docs[0].isbn  ?this.state.bookData.docs[0].isbn[0] : 'No ISBN'}
-             goodreads={ this.state.bookData.docs[0].id_goodreads ? Togoodreads + this.state.bookData.docs[0].id_goodreads[0] : '404'} 
-             img={  this.state.bookData.docs[0].isbn ? coverImage + this.state.bookData.docs[0].isbn[0] +'-L.jpg': '404' }
-             />
+            <div className="InputOfTodos">
+               <input 
+                name = "toSearch"
+                type = "text"
+                placeholder="Search for a book or author"
+                className="Searchterms"
+                value = {this.state.toSearch}
+                onChange = {this.handleChange}
+                
+                />
+                <div className="columnCount">
+            { this.state.bookData.map(item => (
+            <ul className="BooksToDisplay">
+              <BooksToDisplay title={item.title} author_name={item.author_name}
+               isbn={ item.isbn  ?item.isbn[0] : 'No ISBN'}
+               goodreads={ item.id_goodreads ? Togoodreads + item.id_goodreads[0] : '404'}
+               
+               img={  item.isbn ? coverImage +item.isbn[0] +'-L.jpg': genericBookImage } />
+            </ul>
+            ))}
+            </div>
                 </div>
         )
     }
