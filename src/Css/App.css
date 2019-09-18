@@ -6,33 +6,38 @@ textarea:focus,
 button:focus {
     outline: none;
 }
-body{
+
+body {
     background-color: rgb(34, 34, 34);
-    color:white;
-overflow-x: hidden;
+    color: white;
+    overflow-x: hidden;
 }
 
-  
-.CovrImage{
-    float:left;
-    width: 310px;
-    height:480px;
-    object-fit: cover;
+
+.CovrImage {
+    float: left;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
 }
-.textnextToImg{
-    padding-top:5em;
+
+.textnextToImg {
+    padding-top: 0em;
     line-height: 400%;
-margin:1.8em;
+    margin: 2.5em;
 }
-h2{
+
+h2 {
     display: inline;
     font-family: 'Heebo', sans-serif;
 }
-h3{
+
+h3 {
     display: inline;
     font-family: 'Heebo', sans-serif;
 }
-.Header{
-height:10px;
-width:100vw;
+
+.Header {
+    height: 10px;
+    width: 100vw;
 }
