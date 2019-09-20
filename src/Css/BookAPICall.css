@@ -47,3 +47,44 @@
     height: 40vh;
 
 }
+
+input[type='checkbox'] {
+    display: none;
+}
+
+label{
+    color:rgb(145, 145, 145);
+    line-height: 2.6em;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.buttonNning{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+
+  
+.container2 {
+    top:1em;
+    margin-top:20px;
+   line-height: 50px;
+    display: flex;
+    padding:10px;
+    float:left;
+    cursor: pointer;
+    font-size: 40px;
+    user-select: none;
+    border:1px solid white;
+    text-align:center;
+  }
+  .container2:hover{
+      background-color:rgba(7, 146, 156, 0.2);
+  }
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
