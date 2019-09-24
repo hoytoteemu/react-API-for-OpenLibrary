@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import BooksToDisplay from './BooksToDisplay.js'
 import '../Css/BookAPICall.css';
-import { throwStatement } from '@babel/types';
 
 let Togoodreads = 'https://www.goodreads.com/book/show/'
 let coverImage = 'http://covers.openlibrary.org/b/id/'
@@ -33,7 +32,7 @@ class BookAPICall extends Component {
             
         })
 
-        console.log(this.state.search)
+        
         
     setTimeout(() => {
         if(value.length>=5){
@@ -50,7 +49,7 @@ class BookAPICall extends Component {
      
     .then(result => result.json())
     .then(data =>{
-        console.log(url)
+  //      console.log(url)
         this.setState({bookData: data.docs,
             isLoaded: true })
     })
@@ -69,7 +68,7 @@ class BookAPICall extends Component {
    
 
     render() {
-    //    console.log(this.state.bookData)
+     console.log(this.state.bookData)
 
         const { error, isLoaded } = this.state;
         if (error) {
@@ -83,7 +82,7 @@ class BookAPICall extends Component {
            let label1 = this.state.search ?'Alter your search to Authors' :  'Alter your search to books' 
 
          
-           console.log(placeHolder)
+        //   console.log(placeHolder)
         return (
            <div>
                <div className="buttonNning">
@@ -119,16 +118,15 @@ class BookAPICall extends Component {
           item.cover_i ? 
            <ul className="BooksToDisplay">
               <BooksToDisplay title={item.title} author_name={item.author_name}
-               // isbn={ item.isbn  ?item.isbn[0] : 'No ISBN'}
-
+                isbn={ item.isbn  ?item.isbn[0] : 'No ISBN'}
+               
                goodreads={ item.id_goodreads ? Togoodreads + item.id_goodreads[0] : '404'}
                
-               img={  item.cover_i ? coverImage +item.cover_i +'-L.jpg': console.log(item.title + 'no image') } />
+               img={  item.cover_i ? coverImage +item.cover_i +'-L.jpg': null } />
                
             </ul>
-           :console.log('book has no cover'+ item.title)
+           :null
            ))}
-        
             </div>
         
                 </div>

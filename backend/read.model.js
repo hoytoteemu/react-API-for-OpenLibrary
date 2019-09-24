@@ -6,10 +6,10 @@ let Read = new Schema({
         type: String
     },
     read_cover_i: {
-        type: Number
+        type: String
     },
     read_id_goodreads: {
-        type: Number
+        type: String
     },
     read_isbn: {
         type: String

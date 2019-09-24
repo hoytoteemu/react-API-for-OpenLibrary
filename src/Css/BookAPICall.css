@@ -4,7 +4,7 @@
     width: 100vw;
     font-size: 8em;
     text-align: center;
-    height: 2em;
+    height: auto;
     font-family: 'Josefin Sans', sans-serif;
     background-color: rgb(34, 34, 34);
     color: rgb(255, 255, 255);
@@ -66,8 +66,9 @@ label{
 
   
 .container2 {
-    top:1em;
-    margin-top:20px;
+    top:5em;
+    
+    margin-bottom:1em;
    line-height: 50px;
     display: flex;
     padding:10px;
@@ -77,14 +78,17 @@ label{
     user-select: none;
     border:1px solid white;
     text-align:center;
+    z-index: 2;
+    background-color:rgb(26, 26, 26);
   }
   .container2:hover{
       background-color:rgba(7, 146, 156, 0.2);
   }
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+ 
+  .prettyButton{
+      background-color: rgba(0, 121, 158, 0.603);
+      color:white;
+      border:1px solid black;
+      border-radius: 50px;
+      font-size:2em;
   }

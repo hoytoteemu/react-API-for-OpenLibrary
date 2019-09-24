@@ -41,3 +41,44 @@ h3 {
     height: 10px;
     width: 100vw;
 }
+.nav{
+    position: absolute;
+    width:100vw;
+    right:5em;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    text-align:right;
+    font-size:2em;
+    color:white;
+    
+}
+.nav li{
+    display:inline;
+}
+.navbar1{
+    display:none;
+}
+.navbar{
+    display:flex;
+}
+.nav a{
+    display:inline-block;
+    padding:10px;
+    padding-right:40px;
+    color:white;
+    font-family: 'Heebo', sans-serif;
+    text-decoration: none;
+}
+li a:hover {
+    background-color:rgba(0, 95, 82, 0.466);
+  }
+  .nav-container{
+      width:100vw;
+      
+  }
+  .navbar-item{
+
+    border-bottom: 1px solid white;
+      
+  }
