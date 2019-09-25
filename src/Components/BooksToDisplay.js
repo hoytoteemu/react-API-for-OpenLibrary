@@ -11,7 +11,7 @@ class BooksToDisplay extends Component  {
             read_id_goodreads: '',
             read_isbn: '',
             read_title:'',
-                      
+            info:'invisible'          
         }
         
         this.handleButtonAndItsFunction = this.handleButtonAndItsFunction.bind(this)
@@ -30,7 +30,7 @@ class BooksToDisplay extends Component  {
             read_id_goodreads: this.props.goodreads,
             read_isbn: this.props.isbn,
             read_title:this.props.title,
-                      
+            info:"visibleDIV",
         
         })
         setTimeout(() => {
@@ -49,7 +49,8 @@ class BooksToDisplay extends Component  {
                 read_cover_i: '',
                 read_id_goodreads: '',
                 read_isbn: '',
-                read_title: ''
+                read_title: '',
+                info:"invisible",
              } )
         }, 1000);
     
@@ -78,7 +79,9 @@ class BooksToDisplay extends Component  {
 {link}
 <button onClick={this.handleButtonAndItsFunction} className="prettyButton">Add to reading list</button>
       </div>
-
+      <div className={this.state.info}>
+            <h1>Book succesfully added to reading list</h1>
+        </div>
     </div>
   )
     }

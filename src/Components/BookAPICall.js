@@ -21,6 +21,7 @@ class BookAPICall extends Component {
         }
         
         this.handleChange = this.handleChange.bind(this)
+        this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this)
     }
     
     handleChange(event){
@@ -31,7 +32,7 @@ class BookAPICall extends Component {
             [name]:value,
             
         })
-
+       
         
         
     setTimeout(() => {
@@ -41,6 +42,15 @@ class BookAPICall extends Component {
     },1000);    
         
 }
+handleChangeCheckBox(event){
+    const target = event.target
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name
+    this.setState({
+        [name]:value,
+        toSearch: "",
+
+    })}
         find = searchTerm => {
             let authorB00k= this.state.search ? 'title' : 'author'
         const url = `http://openlibrary.org/search.json?${authorB00k}=${searchTerm}`
@@ -95,7 +105,7 @@ class BookAPICall extends Component {
                 id="author"
                 
                 checked = {this.state.author}
-                onChange = {this.handleChange}
+                onChange = {this.handleChangeCheckBox}
                 />
                <span className="checkmark"></span>
                </div>

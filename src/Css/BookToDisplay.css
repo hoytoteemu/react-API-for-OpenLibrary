@@ -1,0 +1,16 @@
+.visibleDIV{
+    display:block;
+    position:absolute;
+    top:10px;
+    left:50px;
+    transform:translate(-25px);
+    color:white;
+    font-family: 'Work Sans', sans-serif;
+    transition-duration: 0.8s;
+    opacity:1;
+}
+.invisible{
+    width:0px;
+    opacity:0;
+    visibility: hidden;
+}

@@ -28,9 +28,10 @@ console.log(this.state.click)
     }
   render() {
       let  classsNameOfNavbar = this.state.click ? 'navbar' : 'navbar1'
+
     return (
         <div>
-            <button onClick={this.ButtonPress}>Push</button>
+            <button onClick={this.ButtonPress} className="hamburgerMenu"> &#9776;</button>
       <Router>
 <div className="nav-container">
           <nav className={classsNameOfNavbar}>
@@ -41,7 +42,7 @@ console.log(this.state.click)
             <div className="test">
               <ul className="nav">
                 <li className="navbar-item">
-                <Link to="/FindBooks" className="nav-link">Find books</Link>
+                <Link to="./" className="nav-link">Home</Link>
                 </li>
                 <li className="navbar-item">
                   <Link to="/ReadingList" className="nav-link">Reading list</Link>
@@ -55,11 +56,12 @@ console.log(this.state.click)
         
         
 <Route path="/ReadingList/" component={GetReadingList} />
-<Route path="/FindBooks/" component={BookAPICall} />
+<Route path="./" component={BookAPICall} />
 
          
         </div>
       </Router>
+      < BookAPICall />
       </div>
     );
   }

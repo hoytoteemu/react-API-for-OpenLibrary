@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:100&display=swap');
+
+.visibleDIV{
+    display:block;
+    position:fixed;
+    top:10px;
+    left:50px;
+    transform:translate(-25px);
+    color:white;
+    font-family: 'Work Sans', sans-serif;
+    transition-duration: 0.8s;
+    opacity:1;
+    background-color:rgba(10,10,10,0.7);
+}
+.invisible{
+    width:0px;
+    height:0px ;
+    opacity:0;
+    visibility: hidden;
+}

@@ -54,8 +54,8 @@ class GetReadingList extends Component{
                    <Read title={item.read_title} author_name={item.read_author_name}
                      isbn={ item.read_isbn  ?item.read_isbn : 'No ISBN'}
                     
-                    goodreads={ item.read_id_goodreads ?  item.id_read_goodreads : '404'}
-                    
+                    goodreads={ item.read_id_goodreads ?  item.read_id_goodreads : '404'}
+                    _id = {item._id}
                     img={  item.read_cover_i ? item.read_cover_i: null } />
                     
                  </ul>
