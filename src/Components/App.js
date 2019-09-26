@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import '../Css/App.css';
 import BookAPICall from './BookAPICall.js' 
-
 import GetReadingList from "./GetReadingList.js";
+import Suggestions from "./Suggestions.js";
 
 
 
@@ -42,26 +42,30 @@ console.log(this.state.click)
             <div className="test">
               <ul className="nav">
                 <li className="navbar-item">
-                <Link to="./" className="nav-link">Home</Link>
+                <Link to="Home/" className="nav-link">Home</Link>
                 </li>
                 <li className="navbar-item">
-                  <Link to="/ReadingList" className="nav-link">Reading list</Link>
+                <Link to="/Search" className="nav-link">Search</Link>
                 </li>
-
+                <li className="navbar-item">
+                <Link to="/ReadingList" className="nav-link">Reading list</Link>
+                </li>
               </ul>
             </div>
           </nav>
           <br/>
 
         
-        
+          <Route path="/Home/" component={Suggestions} />  
+          <Route path="/Search/" component={BookAPICall} />    
 <Route path="/ReadingList/" component={GetReadingList} />
-<Route path="./" component={BookAPICall} />
+
+
 
          
         </div>
       </Router>
-      < BookAPICall />
+   
       </div>
     );
   }

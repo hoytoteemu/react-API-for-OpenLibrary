@@ -16,6 +16,9 @@ let Read = new Schema({
     },
     read_title: {
         type: String
+    },
+    read_subject: {
+        type: String
     }
 });
 

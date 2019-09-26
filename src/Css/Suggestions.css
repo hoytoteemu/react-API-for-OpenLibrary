@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:100&display=swap');
+
+body::-webkit-scrollbar { 
+    display: none;
+    overflow:hidden;
+}
+
+.BGIMAGE {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    margin-top: 4em;
+    justify-content: center;
+    
+}
+
+.images {
+    height: 400px;
+    width: auto;
+    filter: grayscale(80%)blur(2px);
+
+}
+
+.titleOfMyApp {
+    font-family: 'Heebo', sans-serif;
+    position: absolute;
+    z-index: 5;
+    font-size: 10em;
+    text-align: center;
+    color: white;
+    background-color: rgba(36, 36, 36, 0.699);
+}

@@ -11,11 +11,23 @@ class GetReadingList extends Component{
             bookData: null,
             isLoaded: false,
             readingList: []
+            
         }
-        
+        this.handleDataCallback = this.handleDataCallback.bind(this)
+    
     }
     
+   
 
+    handleDataCallback (postItem) {
+
+        console.log(postItem)
+        let currentPostList = this.state.readingList
+        currentPostList.pop(postItem)
+        this.setState({
+            readingList: currentPostList
+        })
+      }
 
 
 
@@ -32,7 +44,7 @@ class GetReadingList extends Component{
             setTimeout(() => {
                 console.log(this.state.readingList)
      
-            }, 2000);
+            }, 100);
                        
       
         }        
@@ -56,6 +68,8 @@ class GetReadingList extends Component{
                     
                     goodreads={ item.read_id_goodreads ?  item.read_id_goodreads : '404'}
                     _id = {item._id}
+                    didHandleRemove={this.handlePostRemove}
+                    dataCallback={this.handleDataCallback}
                     img={  item.read_cover_i ? item.read_cover_i: null } />
                     
                  </ul>

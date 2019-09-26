@@ -45,6 +45,7 @@ readRoutes.route('/update/:id').post(function(req, res) {
             read.read_id_goodreads = req.body.read_id_goodreads;
             read.read_isbn = req.body.read_isbn;
             read.read_title = req.body.read_title;
+            read.subject = req.body.read_subject;
 
             read.save().then(read => {
                 res.json('Book updated!');

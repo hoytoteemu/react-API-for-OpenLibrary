@@ -11,6 +11,7 @@ class BooksToDisplay extends Component  {
             read_id_goodreads: '',
             read_isbn: '',
             read_title:'',
+            read_subject:'',
             info:'invisible'          
         }
         
@@ -22,6 +23,7 @@ class BooksToDisplay extends Component  {
         console.log(`Book Cover number: ${this.props.img}`);
         console.log(`Book goodreads id: ${this.props.goodreads}`);
         console.log(`Book isbn: ${this.props.isbn}`);
+        console.log(`Book subject: ${this.props.subject}`);
         console.log(`Book author name: ${ this.props.author_name}`);
         
         this.setState({
@@ -30,6 +32,8 @@ class BooksToDisplay extends Component  {
             read_id_goodreads: this.props.goodreads,
             read_isbn: this.props.isbn,
             read_title:this.props.title,
+            read_subject:this.props.subject,
+
             info:"visibleDIV",
         
         })
@@ -39,7 +43,8 @@ class BooksToDisplay extends Component  {
                 read_cover_i: this.state.read_cover_i,
                 read_id_goodreads: this.state.read_id_goodreads,
                 read_isbn: this.state.read_isbn,
-                read_title: this.state.read_title  
+                read_title: this.state.read_title, 
+                read_subject: this.state.read_subject  
             };
             console.log(newRead)
             axios.post('http://localhost:4000/reads/add', newRead)
@@ -50,6 +55,7 @@ class BooksToDisplay extends Component  {
                 read_id_goodreads: '',
                 read_isbn: '',
                 read_title: '',
+                read_subject:'',
                 info:"invisible",
              } )
         }, 1000);
