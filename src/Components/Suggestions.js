@@ -16,8 +16,11 @@ class Suggestions extends Component {
     }
     
     componentDidMount() {
-        this.setState({ getReadingList: []
+        this.setState({ 
+            getReadingList: [],
+            getSubjects : [],
         });
+        master = []
         axios.get('http://localhost:4000/reads/')
             .then(response => {
                 this.setState({ getReadingList: response.data,
@@ -48,7 +51,7 @@ class Suggestions extends Component {
         return(
             
             <div className="BGIMAGE">
-<h1 className="titleOfMyApp">Create your own readinglist</h1>
+<h1 className="titleOfMyApp">Create your own reading list</h1>
 
 
       {this.state.getSubjects.map((value, index) => {

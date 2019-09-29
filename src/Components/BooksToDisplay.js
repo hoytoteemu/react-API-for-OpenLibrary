@@ -1,24 +1,28 @@
 
 import React, { Component }  from 'react'
 import axios from 'axios'
+import uniqueId from 'react-html-id';
 
 class BooksToDisplay extends Component  {
     constructor(props) {
         super(props)
         this.state = {
+            key:'',
             read_author_name: '',
             read_cover_i: '',
             read_id_goodreads: '',
             read_isbn: '',
             read_title:'',
             read_subject:'',
-            info:'invisible'          
+            info:'invisible',
+
         }
-        
+        uniqueId.enableUniqueIds(this)
         this.handleButtonAndItsFunction = this.handleButtonAndItsFunction.bind(this)
     }
     handleButtonAndItsFunction(props){
         console.log(`Form submitted:`);
+        console.log(`Book key: ${this.props.id}`);
         console.log(`Book title: ${this.props.title}`);
         console.log(`Book Cover number: ${this.props.img}`);
         console.log(`Book goodreads id: ${this.props.goodreads}`);
@@ -33,7 +37,7 @@ class BooksToDisplay extends Component  {
             read_isbn: this.props.isbn,
             read_title:this.props.title,
             read_subject:this.props.subject,
-
+            key:this.props.id,
             info:"visibleDIV",
         
         })
@@ -44,9 +48,10 @@ class BooksToDisplay extends Component  {
                 read_id_goodreads: this.state.read_id_goodreads,
                 read_isbn: this.state.read_isbn,
                 read_title: this.state.read_title, 
-                read_subject: this.state.read_subject  
+                read_subject: this.state.read_subject,
+                key : this.state.key 
             };
-            console.log(newRead)
+           // console.log(newRead)
             axios.post('http://localhost:4000/reads/add', newRead)
             .then(res => console.log(res.data));
             this.setState({
@@ -57,6 +62,7 @@ class BooksToDisplay extends Component  {
                 read_title: '',
                 read_subject:'',
                 info:"invisible",
+                key : ''
              } )
         }, 1000);
     

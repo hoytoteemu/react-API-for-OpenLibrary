@@ -1,4 +1,135 @@
-.columncountGRL{
-    margin-top:6em;
-    column-count: 2;
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:100&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+
+.columncountGRL {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    margin-top: 4em;
+    justify-content: center;
+}
+.linkToGoodreads{
+    color:white;
+}
+.linkToGoodreads:hover{
+    color:rgb(135, 247, 8);
+}
+.linkToGoodreads:visited{
+    color:rgb(0, 0, 0);
+}
+.textnextToImgGet {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+
+    color: white;
+    padding-top: 0em;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    transition: 0.6s;
+}
+
+.textnextToImgGet:hover {
+    opacity: 1;
+    transition: 0.6s;
+}
+
+.textOnImage {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+
+    top: -2px;
+    left: -2px;
+    line-height: 2.6;
+    width: 90%;
+    height: 86%;
+    font-size: 2em;
+    color: white;
+    padding-top: 3em;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    transition: 1.6s;
+    opacity: 0;
+}
+
+.bookstodisplayDivG {
+    display: flex;
+    width: auto;
+    page-break-inside: avoid;
+}
+
+.CovrImageGet {
+    position: relative;
+    height: 600px;
+    width: 400px;
+    padding: 1px;
+    transition: 0.9s;
+    object-fit: cover;
+}
+
+.textOnImage:hover {
+    opacity: 1;
+}
+
+.textnextToImgGet:hover .CovrImageGet {
+    opacity: 1;
+    filter: grayscale(80%)blur(10px)contrast(50%);
+    transition: 0.9s;
+}
+
+.prettyButtonGET {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: rgba(255, 2, 2, 0.918);
+    color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 1.5em;
+    width: 1.5em;
+    font-size: 1em;
+    transform: scale(1);
+    transition-duration: 0.5s;
+}
+
+.prettyButtonGET:hover {
+    transform: scale(1.2);
+}
+
+.prettyButtonGET:active {
+    transform: scale(1.1);
+}
+
+
+.visibleDIV {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 60px;
+    transform: translate(-35px);
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    transition-duration: 0.8s;
+    opacity: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    background-color: rgba(14, 14, 14, 0.6);
+}
+
+.invisible {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    visibility: hidden;
 }

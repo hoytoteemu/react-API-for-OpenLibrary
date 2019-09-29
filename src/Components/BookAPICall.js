@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import BooksToDisplay from './BooksToDisplay.js'
 import '../Css/BookAPICall.css';
+import uniqueId from 'react-html-id';
 
 let Togoodreads = 'https://www.goodreads.com/book/show/'
 let coverImage = 'http://covers.openlibrary.org/b/id/'
@@ -19,7 +20,7 @@ class BookAPICall extends Component {
             search:false,
            
         }
-        
+        uniqueId.enableUniqueIds(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this)
     }
@@ -97,7 +98,7 @@ handleChangeCheckBox(event){
            <div>
                <div className="buttonNning">
                
-               <label for="author" id="label" className="container2">{label1}
+               <label htmlFor="author" id="label" className="container2">{label1}
             <div className="container">
                   <input 
                 name = 'search'
@@ -127,7 +128,7 @@ handleChangeCheckBox(event){
 
           item.cover_i ? 
            <ul className="BooksToDisplay">
-              <BooksToDisplay title={item.title} author_name={item.author_name}
+              <BooksToDisplay  id={this.nextUniqueId()} title={item.title} author_name={item.author_name}
                 isbn={ item.isbn  ?item.isbn[0] : 'No ISBN'}
                subject = {item.subject ? item.subject[0]:'No Subject'}
                goodreads={ item.id_goodreads ? Togoodreads + item.id_goodreads[0] : '404'}
