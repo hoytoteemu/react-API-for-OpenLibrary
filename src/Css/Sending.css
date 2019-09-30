@@ -1,0 +1,30 @@
+.LinkToOpenLibrary{
+    color:white;
+}
+.LinkToOpenLibrary:hover{
+    color:rgb(135, 247, 8);
+}
+.LinkToOpenLibrary:visited{
+    color:rgb(0, 0, 0);
+}
+.Getsugg{
+    background-color: rgba(0,0,0,0);
+    border:none;
+    color:white;
+    font-size:2em;  
+    transition: 0.9s;
+}
+.Getsugg:hover{
+    
+    color:rgb(3, 3, 3);
+    transition: 0.9s;
+}
+
+.CovrImageGet {
+    position: relative;
+    height: 460px;
+    width: 300px;
+    padding: 1px;
+    transition: 0.9s;
+    object-fit: cover;
+}

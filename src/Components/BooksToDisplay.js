@@ -14,6 +14,7 @@ class BooksToDisplay extends Component  {
             read_isbn: '',
             read_title:'',
             read_subject:'',
+            read_read:'',
             info:'invisible',
 
         }
@@ -28,6 +29,7 @@ class BooksToDisplay extends Component  {
         console.log(`Book goodreads id: ${this.props.goodreads}`);
         console.log(`Book isbn: ${this.props.isbn}`);
         console.log(`Book subject: ${this.props.subject}`);
+        console.log(`Book readingLink: ${this.props.readingLink}`);
         console.log(`Book author name: ${ this.props.author_name}`);
         
         this.setState({
@@ -37,6 +39,7 @@ class BooksToDisplay extends Component  {
             read_isbn: this.props.isbn,
             read_title:this.props.title,
             read_subject:this.props.subject,
+            read_read:this.props.readingLink,
             key:this.props.id,
             info:"visibleDIV",
         
@@ -49,6 +52,7 @@ class BooksToDisplay extends Component  {
                 read_isbn: this.state.read_isbn,
                 read_title: this.state.read_title, 
                 read_subject: this.state.read_subject,
+                read_read: this.state.read_read,
                 key : this.state.key 
             };
            // console.log(newRead)
@@ -61,6 +65,7 @@ class BooksToDisplay extends Component  {
                 read_isbn: '',
                 read_title: '',
                 read_subject:'',
+                read_read:'',
                 info:"invisible",
                 key : ''
              } )

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import '../Css/Suggestions.css';
 let master = []
+
 class Suggestions extends Component {
     constructor(){
         super()
@@ -10,10 +11,12 @@ class Suggestions extends Component {
             error: null,
             getSubjects : [],
             isLoaded:false,
-            subjectData:''
+            subjectData:'',
+           
         }
 
     }
+
     
     componentDidMount() {
         this.setState({ 
@@ -58,7 +61,7 @@ class Suggestions extends Component {
         return  <div><img src={value}alt='cover' className="images"></img></div>
         
       })}
-    
+
             </div>
         )
     }

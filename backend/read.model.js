@@ -22,7 +22,14 @@ let Read = new Schema({
     },
     key: {
         type: String
-    }
+    },
+    search: {
+        type: String
+    },
+
+read_read: {
+    type: String
+}
 });
 
 module.exports = mongoose.model('Read', Read);

@@ -8,6 +8,7 @@ import Suggestions from "./Suggestions.js";
 
 
 
+
 class App extends Component {
     constructor(){
         super()
@@ -50,6 +51,7 @@ console.log(this.state.click)
                 <li className="navbar-item">
                 <Link to="/ReadingList" className="nav-link">Reading list</Link>
                 </li>
+              
               </ul>
             </div>
           </nav>
@@ -59,6 +61,7 @@ console.log(this.state.click)
           <Route path="/Home/" component={Suggestions} />  
           <Route path="/Search/" component={BookAPICall} />    
 <Route path="/ReadingList/" component={GetReadingList} />
+
 
 
 

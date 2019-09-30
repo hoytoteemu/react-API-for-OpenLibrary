@@ -49,10 +49,10 @@
 
     top: -2px;
     left: -2px;
-    line-height: 2.6;
+    line-height: 2;
     width: 90%;
     height: 86%;
-    font-size: 2em;
+    font-size: 1.2em;
     color: white;
     padding-top: 3em;
     padding-left: 20px;
@@ -132,4 +132,67 @@
     height: 0px;
     opacity: 0;
     visibility: hidden;
+}
+.LinkToOpenLibrary{
+    color:white;
+}
+.LinkToOpenLibrary:hover{
+    color:rgb(135, 247, 8);
+}
+.LinkToOpenLibrary:visited{
+    color:rgb(0, 0, 0);
+}
+
+.Getsuggup{
+    
+    text-shadow: none;
+    font-weight: normal;
+    font-family: 'Lato', sans-serif;
+    background-color: rgba(0,0,0,0);
+    border:none;
+    text-decoration: none;
+    color:rgb(111, 233, 255);
+    font-size:1em;  
+    transition: 0.9s;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+.Getsuggup:hover{
+    font-weight: bold;
+    color:rgb(255, 0, 0);
+    transition: 0.9s;
+}
+.Getsugg{
+    text-shadow: none;
+    font-weight: normal;
+    font-family: 'Lato', sans-serif;
+    background-color: rgba(0,0,0,0);
+    border:none;
+    text-decoration: none;
+    color:rgb(111, 233, 255);
+    font-size:1.6em;  
+    transition: 0.9s;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+
+}
+.Getsugg:hover{
+    font-weight: bold;
+    color:rgb(255, 0, 0);
+    transition: 0.9s;
+}
+
+.CovrImageGet {
+    position: relative;
+    height: 460px;
+    width: 300px;
+    padding: 1px;
+    transition: 0.9s;
+    object-fit: cover;
 }

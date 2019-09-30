@@ -132,7 +132,7 @@ handleChangeCheckBox(event){
                 isbn={ item.isbn  ?item.isbn[0] : 'No ISBN'}
                subject = {item.subject ? item.subject[0]:'No Subject'}
                goodreads={ item.id_goodreads ? Togoodreads + item.id_goodreads[0] : '404'}
-               
+               readingLink = {item.key? item.key:null}
                img={  item.cover_i ? coverImage +item.cover_i +'-L.jpg': null } />
                
             </ul>
