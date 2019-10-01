@@ -27,7 +27,7 @@ class GetReadingList extends Component{
             notYte:false,
             suggestions:'',
             Getsuggestions:[],
-
+            info2:'invisible',
         }
      
     }
@@ -48,7 +48,7 @@ class GetReadingList extends Component{
             read_subject:item.subject,
             read_read:item.key,
             key:item.key,
-            info:"visibleDIV",
+            info2:"visibleDIV",
         
         })
         setTimeout(() => {
@@ -56,7 +56,7 @@ class GetReadingList extends Component{
                 read_author_name:this.state.read_author_name,
                 read_cover_i: this.state.read_cover_i,
                 read_title: this.state.read_title, 
-                read_subject: this.state.read_subject,
+                read_subject: this.state.read_subject[0],
                 read_read: this.state.read_read,
                 key: this.state.key 
             };
@@ -71,7 +71,7 @@ class GetReadingList extends Component{
                 read_title: '',
                 read_subject:'',
                 read_read:'',
-                info:"invisible",
+                info2:"invisible",
                 key : ''
              } )
         }, 1000);
@@ -228,22 +228,21 @@ class GetReadingList extends Component{
               <div className="textnextToImgGet">
               <img  src={item.read_cover_i} alt='cover' className="CovrImageGet"></img>
                <div className="textOnImage"> 
-                <h2> { item.read_title}</h2>
-                <br></br>
+
+                {item.read_read?
+                             <h2><a href={openlibrary+item.read_read} target="blank" className="Getsuggup">Read <br/> {item.read_title.substring(0, 40)}</a></h2>:<h2>{item.read_title.substring(0, 40)}</h2>}
+
+                <br></br><br></br>
                 <h2>BY </h2>
                 <br></br>
                 <h2> { item.read_author_name}</h2>
-                <br></br>
-                {item.read_read?
-                             <h2><a href={openlibrary+item.read_read} target="blank" className="Getsuggup">Read {item.read_title}</a></h2>:null}
-        
-        <br></br>
+               
         <button onClick={this.handleDelete.bind(this, item.key)} className="prettyButtonGET">X</button>
-        <button onClick={this.searchGET.bind(this, item.read_subject)} className="Getsugg"> {'Subject '+ item.read_subject
+        <button onClick={this.searchGET.bind(this, item.read_subject)} className="Getsugg"> {'More '+ item.read_subject.substring(0, 20)
   }</button>
               </div>
               <div className={this.state.info}>
-            <h1>Book succesfully added</h1>
+            <h1>Book succesfully deleted</h1>
         </div>
         </div>
             </div>
@@ -263,19 +262,24 @@ class GetReadingList extends Component{
                           { item.cover_id ? <img  src={ coverImage+item.cover_id+'-L.jpg'}  alt='cover' className="CovrImageGet"></img>: null} 
                            
                             <div className="textOnImage"> 
-                            <h2> { item.title}</h2>
+                            {item.key?
+                             <h2><a href={openlibrary+item.key} target="blank" className="Getsuggup">{item.title.substring(0, 40)}</a></h2>:item.title.substring(0, 40)}
                             <br></br>
                 <h2>BY </h2>
                              <br></br>
                              <h2> { item.authors[0].name}</h2>
                              <br></br>
                             
-                             {item.key?
-                             <h2><a href={openlibrary+item.key} target="blank" className="Getsuggup">Read {item.title}</a></h2>:null}
-                             <button onClick={this.handleButtonAndItsFunction.bind(this, item)} className="prettyButton">Add to reading list</button>
+                             
+                             <button onClick={this.handleButtonAndItsFunction.bind(this, item)} className="prettyButtonGETUP">Add to reading list</button>
+                             <button onClick={this.searchGET.bind(this, item.subject[0])} className="Getsugg"> {'More '+ item.subject[0]
+  }</button>
+  <div className={this.state.info2}>
+            <h1>Book succesfully added</h1>
+        </div>
                            </div>
                          </div>
-                         
+                    
                        }) :null}
         </div>
     )
