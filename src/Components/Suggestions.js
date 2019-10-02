@@ -58,7 +58,7 @@ class Suggestions extends Component {
 
 
       {this.state.getSubjects.map((value, index) => {
-        return  <div><img src={value}alt='cover' className="images"></img></div>
+        return <div><img src={value}alt='cover' className="images"></img></div>
         
       })}
 

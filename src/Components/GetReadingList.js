@@ -29,13 +29,30 @@ class GetReadingList extends Component{
             bookDeleted2:'invisible',
             div:"invisible",
             bookAdded2:'invisible',
-            
+            offset:1,
+            page:1
         }
      
     }
+    IncrementItem = () => {
+        this.setState({ offset: this.state.offset + 12 ,
+            page: this.state.page + 1});
+        this.searchGET(this.state.suggestions)
+    console.log(this.state.offset)  
+    }
+      DecrementItem = () => {
+        this.setState({ offset: this.state.offset - 12,
+            page: this.state.page - 1 });
+        this.searchGET(this.state.suggestions)
+      }
+     
+
+
     handleStateOfdiv(){
         this.setState({
             div:"invisible",
+            offset:1,
+            page:1
         })
     }
 
@@ -56,7 +73,7 @@ class GetReadingList extends Component{
             read_read:item.key,
             key:item.key,
             bookAdded2:"bookAdded2",
-        
+            
         })
         
         setTimeout(() => {
@@ -82,9 +99,14 @@ class GetReadingList extends Component{
                 read_title: '',
                 read_subject:'',
                 read_read:'',
-                bookAdded2:"invisible",
+               
                 key : ''
              } )
+             setTimeout(() => {
+                 this.setState({
+                    bookAdded2:"invisible",
+                 })
+             }, 1000);
         }, 100);
     
         
@@ -117,7 +139,7 @@ class GetReadingList extends Component{
             find = subject => {
               
          setTimeout(() => {
-          let url ='http://openlibrary.org/subjects/'+this.state.suggestions.toLowerCase()+'.json?'
+          let url ='http://openlibrary.org/subjects/'+this.state.suggestions.toLowerCase()+'.json?offset='+this.state.offset
           axios.get(url)
                   .then(response => {
                       this.setState({ Getsuggestions: response.data,
@@ -132,7 +154,9 @@ class GetReadingList extends Component{
                    console.log(this.state.Getsuggestions)
              
         console.log(this.state.Getsuggestions.works)
-                  }, 100);
+        console.log(url)
+
+    }, 2000);
               
         }, 100);
                    
@@ -229,9 +253,7 @@ class GetReadingList extends Component{
               <div className={this.state.bookDeleted2}>
             <h1>Book succesfully deleted</h1>
         </div>
-        <div className={this.state.bookAdded2}>
-            <h1>Book succesfully added to reading list</h1>
-        </div>
+        
         </div>
             </div>
         ))}
@@ -241,9 +263,17 @@ class GetReadingList extends Component{
          <br></br>
          <br></br>
 <div className={this.state.div}>
+    <h2 className="suggestionsToTitle">{this.state.suggestions.replace(/_/g," ")+ ' ' +this.state.page}</h2>
+    { (this.state.offset >12) ?[<button onClick={this.DecrementItem.bind(this)} className="prettyButtonGETUPLess">Less Books</button>, <button onClick={this.IncrementItem.bind(this)} className="prettyButtonGETUPMore">More Books</button>]
+:<button onClick={this.IncrementItem.bind(this)} className="prettyButtonGETUPMore">More Books</button>}
+
+  
+  
     <button onClick={this.handleStateOfdiv.bind(this)} className="ButtonToreturnYuBackToyourList">X</button>
         {this.searchGET(this.props.item)}
     {this.state.notYte ===true ?
+              
+
       this.state.Getsuggestions.works.map(item => {
                          
                          return  <div className="textnextToImgGetUP" key={item.key}>
@@ -256,20 +286,24 @@ class GetReadingList extends Component{
                             <br></br><br></br>
                 <h2>BY </h2>
                              <br></br><br></br>
-                             <h2> { item.authors[0].name}</h2>
+                             <h2> { item.authors[0] ? item.authors[0].name:'No Author'}</h2>
                              <br></br>
                             
                              
                              <button onClick={this.handleButtonAndItsFunction.bind(this, item)} className="prettyButtonGETUP">Add to reading list</button>
                              <button onClick={this.searchGET.bind(this, item.subject[0])} className="Getsugg"> {'More '+ item.subject[0]
   }</button>
+                             
  
                            </div>
                          </div>
                     
-                       }) :null}
+               }) :null}
                        </div>
-                     
+                       <div className={this.state.bookAdded2}>
+            <h1>Book succesfully added to reading list</h1>
+
+        </div>
         </div>
     )
  }

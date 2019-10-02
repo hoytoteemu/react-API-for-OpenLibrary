@@ -40,6 +40,7 @@
     opacity: 1;
     transition: 0.6s;
 }
+
 .textnextToImgGetUP {
     text-align: center;
     font-family: 'Lato', sans-serif;
@@ -49,7 +50,7 @@
     padding-top: 0em;
     padding-left: 5px;
     padding-right: 5px;
-font-size:13px;
+    font-size: 13px;
     transition: 0.6s;
 }
 
@@ -105,6 +106,7 @@ font-size:13px;
     transition: 0.9s;
     object-fit: cover;
 }
+
 .CovrImageGetUP {
     position: relative;
     height: 420px;
@@ -117,12 +119,14 @@ font-size:13px;
 .textOnImage:hover {
     opacity: 1;
 }
+
 .textnextToImgGetUP:hover .CovrImageGetUP {
     opacity: 1;
 
     filter: grayscale(80%)blur(10px)contrast(50%);
     transition: 0.9s;
 }
+
 .textnextToImgGet:hover .CovrImageGet {
     opacity: 1;
 
@@ -133,10 +137,10 @@ font-size:13px;
 .prettyButtonGETUP {
     position: relative;
     text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     background-color: rgba(0, 0, 0, 0);
@@ -149,9 +153,76 @@ font-size:13px;
     transition-duration: 0.5s;
 }
 
-.prettyButtonGETUP:hover {
+.prettyButtonGETUPMore {
+    position: absolute;
+    right: 20px;
+    bottom: 45px;
+    text-shadow:
+
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+    height: 0.5em;
+    width: 8.5em;
+    font-size: 2.2em;
+    transform: scale(1);
+    transition-duration: 0.5s;
+}
+.prettyButtonGETUPMore:hover {
     transform: scale(1.2);
     transition-duration: 0.5s;
+}
+
+.prettyButtonGETUPMore:active {
+    transform: scale(1);
+    transition-duration: 0.5s;
+}
+
+.prettyButtonGETUPLess {
+    position: absolute;
+    left: 20px;
+    bottom: 45px;
+    text-shadow:
+
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border: none;
+    height: 0.5em;
+    width: 8.5em;
+    font-size: 2.2em;
+    transform: scale(1);
+    transition-duration: 0.5s;
+}
+.prettyButtonGETUPLess:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
+
+.prettyButtonGETUPLess:active {
+    transform: scale(1);
+    transition-duration: 0.5s;
+}
+.prettyButtonGETUP:hover {
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+}
+.suggestionsToTitle{
+    position: absolute;
+    top:2px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
 }
 
 .prettyButtonGETUP:active {
@@ -192,6 +263,7 @@ font-size:13px;
     top: 10px;
     left: 60px;
     transform: translate(-35px);
+    animation: mymove 2s;
     color: white;
     font-family: 'Work Sans', sans-serif;
     transition-duration: 0.8s;
@@ -202,12 +274,14 @@ font-size:13px;
     background-color: rgba(14, 14, 14, 0.6);
     z-index: 50;
 }
-.bookDeleted2{
+
+.bookDeleted2 {
     display: block;
     position: fixed;
     top: 10px;
     left: 60px;
     transform: translate(-35px);
+    animation: mymove 2s;
     color: white;
     font-family: 'Work Sans', sans-serif;
     transition-duration: 0.8s;
@@ -218,6 +292,17 @@ font-size:13px;
     background-color: rgba(14, 14, 14, 0.6);
     z-index: 50;
 }
+
+@keyframes mymove {
+    from {
+        transform: translate(0px);
+    }
+
+    to {
+        transform: translate(-35px);
+    }
+}
+
 .visibleDIVBOOK {
     display: flex;
     flex-wrap: wrap;
@@ -234,13 +319,14 @@ font-size:13px;
     opacity: 1;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top:4em;
-    padding-bottom:4em;
+    padding-top: 4em;
+    padding-bottom: 4em;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 50;
 }
-.ButtonToreturnYuBackToyourList{
+
+.ButtonToreturnYuBackToyourList {
     position: absolute;
     right: 20px;
     top: 20px;
@@ -259,6 +345,7 @@ font-size:13px;
     transition-duration: 0.5s;
     z-index: 30;
 }
+
 .ButtonToreturnYuBackToyourList:hover {
     transform: scale(1.2);
 }
@@ -266,6 +353,7 @@ font-size:13px;
 .ButtonToreturnYuBackToyourList:active {
     transform: scale(1.1);
 }
+
 .invisible {
     width: 0px;
     height: 0px;

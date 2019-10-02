@@ -127,7 +127,7 @@ handleChangeCheckBox(event){
             { this.state.bookData.map(item => (
 
           item.cover_i ? 
-           <ul className="BooksToDisplay">
+          // <ul className="BooksToDisplay">
               <BooksToDisplay  id={this.nextUniqueId()} title={item.title} author_name={item.author_name}
                 isbn={ item.isbn  ?item.isbn[0] : 'No ISBN'}
                subject = {item.subject ? item.subject[0]:'No Subject'}
@@ -135,7 +135,7 @@ handleChangeCheckBox(event){
                readingLink = {item.key? item.key:null}
                img={  item.cover_i ? coverImage +item.cover_i +'-L.jpg': null } />
                
-            </ul>
+          //  </ul>
            :null
            ))}
             </div>
