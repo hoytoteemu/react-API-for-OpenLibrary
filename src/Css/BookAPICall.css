@@ -88,15 +88,21 @@ label {
 }
 
 .prettyButton {
-    background-color: rgba(0, 121, 158, 0.603);
+    position: relative;
+
+    background-color: rgba(0, 0, 0, 0);
     color: white;
     border: 1px solid black;
-    border-radius: 50px;
-    font-size: 2em;
+    height: 3.5em;
+    width: 8.5em;
+    font-size: 1em;
     transform: scale(1);
-transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
-
+.prettyButton:hover {
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
 .prettyButton:active {
     transform: scale(0.9);
 transition-duration: 0.5s;

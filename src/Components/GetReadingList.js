@@ -14,7 +14,6 @@ class GetReadingList extends Component{
             bookData: null,
             isLoaded: false,
             readingList: [],
-            info:'invisible',
             key:'',
             read_author_name: '',
             read_cover_i: '',
@@ -27,9 +26,17 @@ class GetReadingList extends Component{
             notYte:false,
             suggestions:'',
             Getsuggestions:[],
-            info2:'invisible',
+            bookDeleted2:'invisible',
+            div:"invisible",
+            bookAdded2:'invisible',
+            
         }
      
+    }
+    handleStateOfdiv(){
+        this.setState({
+            div:"invisible",
+        })
     }
 
     handleButtonAndItsFunction(item){
@@ -48,9 +55,10 @@ class GetReadingList extends Component{
             read_subject:item.subject,
             read_read:item.key,
             key:item.key,
-            info2:"visibleDIV",
+            bookAdded2:"bookAdded2",
         
         })
+        
         setTimeout(() => {
             const newRead = {
                 read_author_name:this.state.read_author_name,
@@ -60,10 +68,13 @@ class GetReadingList extends Component{
                 read_read: this.state.read_read,
                 key: this.state.key 
             };
+            const books = Object.assign([], this.state.readingList);
+        books.push(newRead);
             console.log(newRead)
             axios.post('http://localhost:4000/reads/add', newRead)
             .then(res => console.log(res.data));
             this.setState({
+                readingList:books,
                 read_author_name: '',
                 read_cover_i: '',
                 read_id_goodreads: '',
@@ -71,10 +82,10 @@ class GetReadingList extends Component{
                 read_title: '',
                 read_subject:'',
                 read_read:'',
-                info2:"invisible",
+                bookAdded2:"invisible",
                 key : ''
              } )
-        }, 1000);
+        }, 100);
     
         
         
@@ -102,7 +113,7 @@ class GetReadingList extends Component{
         
         
              
-            }}, 1000);}
+            }}, 100);}
             find = subject => {
               
          setTimeout(() => {
@@ -110,7 +121,8 @@ class GetReadingList extends Component{
           axios.get(url)
                   .then(response => {
                       this.setState({ Getsuggestions: response.data,
-                        notYte:true 
+                        notYte:true,
+                        div:"visibleDIVBOOK",
                       });
                   })
                   .catch(function (error){
@@ -120,53 +132,26 @@ class GetReadingList extends Component{
                    console.log(this.state.Getsuggestions)
              
         console.log(this.state.Getsuggestions.works)
-                  }, 1000);
+                  }, 100);
               
-        }, 1000);
+        }, 100);
                    
             }
-        
-    
-
-   
-    similarBooks = (subject) => {
-      console.log(subject)
-      
-      this.setState({
-          search:subject,
-      
-      })
-      setTimeout(() => {
-          const newRead = {
-              search : this.state.search 
-          };
-         // console.log(newRead)
-          axios.post('http://localhost:4000/Suggestions/add', newRead)
-          .then(res => console.log(res.data));
-          this.setState({
-              search : ''
-           } )
-      }, 1000);
-  
-     }
-
-
-
-
 
 
       handleDelete = (key) => {
         const index = this.state.readingList.findIndex((list)=> {
             this.setState({key:list._id})
             return (list.key === key);
-            
+           
         })
            const books = Object.assign([], this.state.readingList);
            books.splice(index,1);
            console.log(books)
     this.setState({readingList:books,
+        bookDeleted2:'bookDeleted2',
       //  key:this.state.readinglist._id,
-        info:"visibleDIV"});
+        });
         
         setTimeout(() => {
              const URL = 
@@ -181,7 +166,7 @@ class GetReadingList extends Component{
           console.log(error)
       })  
       this.setState({
-          info:'invisible',
+        bookDeleted2:'invisible',
           key:null
       })
       }, 1000)
@@ -236,13 +221,16 @@ class GetReadingList extends Component{
                 <h2>BY </h2>
                 <br></br>
                 <h2> { item.read_author_name}</h2>
-               
+                <br></br>
         <button onClick={this.handleDelete.bind(this, item.key)} className="prettyButtonGET">X</button>
         <button onClick={this.searchGET.bind(this, item.read_subject)} className="Getsugg"> {'More '+ item.read_subject.substring(0, 20)
   }</button>
               </div>
-              <div className={this.state.info}>
+              <div className={this.state.bookDeleted2}>
             <h1>Book succesfully deleted</h1>
+        </div>
+        <div className={this.state.bookAdded2}>
+            <h1>Book succesfully added to reading list</h1>
         </div>
         </div>
             </div>
@@ -252,21 +240,22 @@ class GetReadingList extends Component{
          <br></br>
          <br></br>
          <br></br>
-
+<div className={this.state.div}>
+    <button onClick={this.handleStateOfdiv.bind(this)} className="ButtonToreturnYuBackToyourList">X</button>
         {this.searchGET(this.props.item)}
     {this.state.notYte ===true ?
       this.state.Getsuggestions.works.map(item => {
                          
-                         return  <div className="textnextToImgGet" key={item.key}>
+                         return  <div className="textnextToImgGetUP" key={item.key}>
                              
-                          { item.cover_id ? <img  src={ coverImage+item.cover_id+'-L.jpg'}  alt='cover' className="CovrImageGet"></img>: null} 
+                          { item.cover_id ? <img  src={ coverImage+item.cover_id+'-L.jpg'}  alt='cover' className="CovrImageGetUP"></img>: null} 
                            
                             <div className="textOnImage"> 
                             {item.key?
-                             <h2><a href={openlibrary+item.key} target="blank" className="Getsuggup">{item.title.substring(0, 40)}</a></h2>:item.title.substring(0, 40)}
-                            <br></br>
+                             <h2><a href={openlibrary+item.key} target="blank" className="Getsuggup">Read <br/> {item.title.substring(0, 40)}</a></h2>:item.title.substring(0, 40)}
+                            <br></br><br></br>
                 <h2>BY </h2>
-                             <br></br>
+                             <br></br><br></br>
                              <h2> { item.authors[0].name}</h2>
                              <br></br>
                             
@@ -274,13 +263,13 @@ class GetReadingList extends Component{
                              <button onClick={this.handleButtonAndItsFunction.bind(this, item)} className="prettyButtonGETUP">Add to reading list</button>
                              <button onClick={this.searchGET.bind(this, item.subject[0])} className="Getsugg"> {'More '+ item.subject[0]
   }</button>
-  <div className={this.state.info2}>
-            <h1>Book succesfully added</h1>
-        </div>
+ 
                            </div>
                          </div>
                     
                        }) :null}
+                       </div>
+                     
         </div>
     )
  }

@@ -13,7 +13,7 @@ class App extends Component {
     constructor(){
         super()
         this.state = {
-    click:false
+    click:true
         }
         this.ButtonPress = this.ButtonPress.bind(this)
 

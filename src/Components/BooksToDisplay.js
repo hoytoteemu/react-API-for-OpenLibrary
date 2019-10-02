@@ -2,7 +2,7 @@
 import React, { Component }  from 'react'
 import axios from 'axios'
 import uniqueId from 'react-html-id';
-
+import '../Css/BookToDisplay.css';
 class BooksToDisplay extends Component  {
     constructor(props) {
         super(props)
@@ -15,13 +15,13 @@ class BooksToDisplay extends Component  {
             read_title:'',
             read_subject:'',
             read_read:'',
-            info:'invisible',
+            bookAdded:'invisible',
 
         }
         uniqueId.enableUniqueIds(this)
-        this.handleButtonAndItsFunction = this.handleButtonAndItsFunction.bind(this)
+        this.handleButtonAndItsFunctioncall = this.handleButtonAndItsFunctioncall.bind(this)
     }
-    handleButtonAndItsFunction(props){
+    handleButtonAndItsFunctioncall(props){
         console.log(`Form submitted:`);
         console.log(`Book key: ${this.props.id}`);
         console.log(`Book title: ${this.props.title}`);
@@ -41,7 +41,7 @@ class BooksToDisplay extends Component  {
             read_subject:this.props.subject,
             read_read:this.props.readingLink,
             key:this.props.id,
-            info:"visibleDIV",
+            bookAdded:"bookAdded",
         
         })
         setTimeout(() => {
@@ -66,7 +66,7 @@ class BooksToDisplay extends Component  {
                 read_title: '',
                 read_subject:'',
                 read_read:'',
-                info:"invisible",
+                bookAdded:"invisible",
                 key : ''
              } )
         }, 1000);
@@ -84,6 +84,9 @@ class BooksToDisplay extends Component  {
   
   return (
     <div className="bookstodisplayDiv">
+       <div className={this.state.bookAdded}>
+            <h1>Book succesfully added to reading list</h1>
+        </div>
       <img src={this.props.img} alt='cover' className="CovrImage"></img>
       <div className="textnextToImg">
         <h2>Title: </h2>
@@ -94,11 +97,9 @@ class BooksToDisplay extends Component  {
         <br></br>
         
 {link}
-<button onClick={this.handleButtonAndItsFunction} className="prettyButton">Add to reading list</button>
+<button onClick={this.handleButtonAndItsFunctioncall} className="prettyButton">Add to reading list</button>
       </div>
-      <div className={this.state.info}>
-            <h1>Book succesfully added to reading list</h1>
-        </div>
+     
     </div>
   )
     }

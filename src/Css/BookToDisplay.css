@@ -1,17 +1,22 @@
-.visibleDIV{
-    display:block;
-    position:absolute;
+.bookAdded{
+    
+    position: fixed;
     top:10px;
     left:50px;
+    padding:10px;
     transform:translate(-25px);
-    color:white;
-    font-family: 'Work Sans', sans-serif;
+    color:rgb(255, 255, 255);
+    font-family: 'lato', sans-serif;
+    border-radius: 10px;
     transition-duration: 0.8s;
     opacity:1;
     background-color:rgba(0, 0, 0, 0.8);
+
 }
 .invisible{
+   
     width:0px;
     opacity:0;
+    display :none;
     visibility: hidden;
 }
