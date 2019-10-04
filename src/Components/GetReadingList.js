@@ -34,6 +34,7 @@ class GetReadingList extends Component{
         }
      
     }
+    
     IncrementItem = () => {
         this.setState({ offset: this.state.offset + 12 ,
             page: this.state.page + 1});
@@ -124,7 +125,8 @@ class GetReadingList extends Component{
           this.setState({
             suggestions:subject.replace(/ /g,"_"),
             notYte:false,
-            Getsuggestions:[]
+            Getsuggestions:[],
+
           })
           console.log(this.state.suggestions)
           setTimeout(() => {

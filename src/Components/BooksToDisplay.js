@@ -90,7 +90,7 @@ class BooksToDisplay extends Component  {
       <img src={this.props.img} alt='cover' className="CovrImage"></img>
       <div className="textnextToImg">
         <h2>Title: </h2>
-        <h3> { this.props.title}</h3>
+        <h3> { this.props.title.substring(0, 35)}</h3>
         <br></br>
         <h2>Author: </h2>
         <h3> { this.props.author_name}</h3>
